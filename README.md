@@ -14,3 +14,6 @@ python3 -m venv env
 
 5) inicializar un repositorio en Git
 
+(error de twitter
+{"errors": [{"message":"Invalid or expired token", "code":89}]})
+17/4 19.57
