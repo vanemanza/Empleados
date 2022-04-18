@@ -1,0 +1,22 @@
+<h1>vista desde Personas</h1>
+
+<!-- * usando en la Listview el atributo "context_object_name"
+
+    {% for l in lista  %}
+    <p>
+        {{l}}
+    </p>    
+    {% endfor %}   -->
+
+<!-- Mientras se ejecuta ListView, "self.object_list" contendrá la lista de objetos
+    sobre los que está operando la vista. -->
+    
+    
+    {% for object in object_list  %}
+
+       <p>
+           {{ object }}
+       </p>
+        
+    {% endfor %}
+        

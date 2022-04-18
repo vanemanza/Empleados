@@ -25,7 +25,7 @@ class EmpleadoAdmin(admin.ModelAdmin):
     # VER SI ES NECESARIO INSTALAR CKEDITOR ? 
 
     search_fields = ('nombre', 'apellido')
-    list_filter = ('departamento', 'habilidad')
+    list_filter = ('departamento', 'habilidad', 'departamento')
     filter_horizontal = ('habilidad',)
 
 admin.site.register(Persona, EmpleadoAdmin)
