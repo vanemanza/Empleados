@@ -6,9 +6,10 @@ from . models import Persona
 
 # 1) listar todos los empleados de la empresa
 class EmpleadosListView(ListView):
-    model = Persona
-    template_name = "lista_empleados.html"
-    #context_object_name = 'lista'
+    model = Persona #listView requiere un modelo
+    template_name = "lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
+    #context_object_name = 'lista' nombre del objeto a traves del cual accedo en html -> {{lista}}
+    #listView : la vista se retorna x defecto en un object list, x eso no hace falta pasarle el context_object_name
 
 
 # 2) listar todos los empleados q pertenecen a un area de la empresa
@@ -19,6 +20,8 @@ class EmpleadosListView(ListView):
 
 class EmpleadosPorAreaListView(ListView):
     """ lista empleados de una empresa por areas"""
+    #model = Persona
+    # en vez de model puedo usar atributo queryset para filtrar segun lo q necesite y no toda la lista
     #queryset = Persona.objects.filter(departamento__nombre='area contable') # no es muy eficiente xq le tengo q indicar en el filtro el area cada vez
     #en vez de usar atributo queryset, uso metodo get_queryset q retorna una lista
     template_name = "lista_por_area.html"
