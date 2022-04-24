@@ -6,8 +6,10 @@ from . models import Persona
 
 # 1) listar todos los empleados de la empresa
 class EmpleadosListView(ListView):
-    model = Persona #listView requiere un modelo
     template_name = "lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
+    paginate_by = 5
+    ordering = 'apellido'
+    model = Persona #listView requiere un modelo
     #context_object_name = 'lista' nombre del objeto a traves del cual accedo en html -> {{lista}}
     #listView : la vista se retorna x defecto en un object list, x eso no hace falta pasarle el context_object_name
 
@@ -28,6 +30,8 @@ class EmpleadosPorAreaListView(ListView):
 
     def get_queryset(self):
         # puedo sobreescribir el metodo q trae x defaul el ListView
+        # retorna una lista de elementos
+        # el valor devuelto debe ser un iterable o una instancia del queryset
         area = self.kwargs['departamento'] # recupero el parametro q me envian por url!
         lista = Persona.objects.filter(departamento__nombre=area)
         return lista
@@ -35,10 +39,36 @@ class EmpleadosPorAreaListView(ListView):
 
 # 3) listar empleados por trabajo
 
+    # para hacer de tarea, como práctica
 
 
 # 4) listar los empleados por palabra clave
 
+class EmpleadosPorKword(ListView):
+    """
+    Lista empleados por palabra clave
+    """
+    template_name = "empleado_por_palabra.html"
+    context_object_name = 'empleados'
+
+    def get_queryset(self) : # función donde haré el filtro!
+        print('***************************************')
+        palabra_clave = self.request.GET.get("kword", "") # del objeto request recupero lo q tenga metodo GET con get
+        lista = Persona.objects.filter(nombre=palabra_clave)
+        print(f'---- lista resultado: {lista}-------------')
+        return lista
+
 
 
 # 5) listar habilidades de un empleado
+
+class HabilidadesList(ListView):
+    template_name = 'habilidades.html'
+    context_object_name = 'habilidades'
+
+    def get_queryset(self):
+        # el atributo habilidades es un ManyToMany con la tabla Habilidades
+        # primero debo obtener un REGISTRO de un empleado y no un queryset
+        # para cada empleado recuperar su lista de habilidades
+        empleado = Persona.objects.get(id=1)      
+        return empleado.habilidad.all()
