@@ -1,18 +1,29 @@
 from django.shortcuts import render
 
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from . models import Persona
 
 # 1) listar todos los empleados de la empresa
 class EmpleadosListView(ListView):
     template_name = "lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
-    paginate_by = 5
-    ordering = 'apellido'
-    model = Persona #listView requiere un modelo
-    #context_object_name = 'lista' nombre del objeto a traves del cual accedo en html -> {{lista}}
+    queryset = Persona.objects.all().order_by('apellido')
+    paginate_by = 5 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
+    #ordering = 'apellido'
+    #model = Persona #listView requiere un modelo
+    context_object_name = 'lista' #nombre del objeto a traves del cual accedo en html -> {{lista}}
     #listView : la vista se retorna x defecto en un object list, x eso no hace falta pasarle el context_object_name
-
+    
+    def get_context_data(self, **kwargs): 
+        context =  super().get_context_data(**kwargs)# este es el contexto q enviamos al template
+        print(context)
+        # el contexto posee los siguientes objetos:
+            # paginator
+            # page_obj
+            # is_paginated
+            # object_list
+        return context
+   
 
 # 2) listar todos los empleados q pertenecen a un area de la empresa
 # class EmpleadosPorAreaListView(ListView):
@@ -38,8 +49,17 @@ class EmpleadosPorAreaListView(ListView):
 
 
 # 3) listar empleados por trabajo
-
     # para hacer de tarea, como práctica
+
+class EmpleadosPorTrabajoListView(ListView):
+    #model = Persona
+    template_name = "empleados_por_trabajo.html"
+    #context_object_name = 'lista_puesto'
+
+    def get_queryset(self):
+        puesto = self.request.GET.get("trabajo", "")        
+        lista = Persona.objects.filter(puesto=puesto)
+        return lista          
 
 
 # 4) listar los empleados por palabra clave
