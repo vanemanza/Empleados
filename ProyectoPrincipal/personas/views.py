@@ -4,6 +4,17 @@ from django.views.generic import ListView, DetailView
 
 from . models import Persona
 
+# 0) Template Base - Home
+class HomeListView(ListView):
+    template_name = 'home.html'
+    queryset = Persona.objects.all().order_by('apellido')
+    paginate_by = 7
+    context_object_name = 'lista'
+
+    def get_context_data(self, **kwargs):         
+        context =  super().get_context_data(**kwargs)  
+        return context
+
 # 1) listar todos los empleados de la empresa
 class EmpleadosListView(ListView):
     template_name = "lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
