@@ -90,5 +90,6 @@ class HabilidadesList(ListView):
         # el atributo habilidades es un ManyToMany con la tabla Habilidades
         # primero debo obtener un REGISTRO de un empleado y no un queryset
         # para cada empleado recuperar su lista de habilidades
-        empleado = Persona.objects.get(id=1)      
+        id_empleado = self.request.GET.get("id_empleado", "")
+        empleado = Persona.objects.get(id=id_empleado)      
         return empleado.habilidad.all()
