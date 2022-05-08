@@ -1,0 +1,21 @@
+{% extends "base.html" %}  
+
+{% load static %} 
+
+{% block content %} 
+<h2>Detalle por Empleado</h2>
+
+<!--{{ object }} con la palabra object puedo recuperar el objeto en cuestion, viene x default con DetailView-->
+
+<!-- si no, tambien puede acceder a traves del nombre del modelo pero en minusculas-->
+<h4>Objeto: {{persona}}</h4>
+
+<h6>Detalles x campos:</h6>
+
+<ul>
+    <li>Nombre Completo: {{persona.nombre}} {{persona.apellido}}</li>
+    <li>Puesto: {{persona.puesto}}</li>
+    <li>Departamento: {{persona.departamento}}</li>
+    <li>Habilidades: {{persona.habilidad}}</li>
+</ul>
+   {% endblock %} 

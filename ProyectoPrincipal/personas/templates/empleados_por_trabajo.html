@@ -1,3 +1,8 @@
+{% extends "base.html" %}  
+
+{% load static %} 
+
+{% block content %} 
 <h1>Buscar empleado por trabajo</h1>
 
 <form action="" method="GET">{% csrf_token %}
@@ -14,3 +19,4 @@
     </li>        
 {% endfor %}
 </ul>
+{% endblock %}

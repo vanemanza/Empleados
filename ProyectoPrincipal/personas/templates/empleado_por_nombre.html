@@ -1,4 +1,10 @@
-<h1>Buscar empleado por palabra clave</h1>
+{% extends "base.html" %}  
+
+{% load static %} 
+
+{% block content %} 
+
+<h1>Buscar empleado por nombre</h1>
 
 <form action="" method="GET">{% csrf_token %}
     <input type="text" id="kword" name="kword" placeholder="ingrese la palabra">
@@ -18,3 +24,5 @@
     
 {% endfor %}
 </ul>
+
+{% endblock %}

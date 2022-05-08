@@ -75,11 +75,11 @@ class EmpleadosPorTrabajoListView(ListView):
 
 # 4) listar los empleados por palabra clave
 
-class EmpleadosPorKword(ListView):
+class EmpleadosPorNombre(ListView):
     """
     Lista empleados por palabra clave
     """
-    template_name = "empleado_por_palabra.html"
+    template_name = "empleado_por_nombre.html"
     context_object_name = 'empleados'
 
     def get_queryset(self) : # función donde haré el filtro!
@@ -104,3 +104,9 @@ class HabilidadesList(ListView):
         id_empleado = self.request.GET.get("id_empleado", "")
         empleado = Persona.objects.get(id=id_empleado)      
         return empleado.habilidad.all()
+
+
+class EmpleadoDetailView(DetailView):
+    model = Persona
+    template_name = "detalles_empleado.html"
+        
