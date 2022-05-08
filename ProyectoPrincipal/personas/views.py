@@ -109,4 +109,13 @@ class HabilidadesList(ListView):
 class EmpleadoDetailView(DetailView):
     model = Persona
     template_name = "detalles_empleado.html"
-        
+
+    # def get_object(self, queryset: Optional[models.query.QuerySet[_M]] = ...) -> _M: #redefine la forma de recuperar un objeto
+    #     return super().get_object(queryset)
+
+
+    def get_context_data(self, **kwargs): # envia alguna variable extra hacia el template,alguna q no esté dentro de los atrs del modelo
+        context = super(EmpleadoDetailView, self).get_context_data(**kwargs)
+        context['titulo'] = 'Empleado del Mes'
+        #debo crear un proceso para determinar si el context es un empleado del mes o no
+        return context
