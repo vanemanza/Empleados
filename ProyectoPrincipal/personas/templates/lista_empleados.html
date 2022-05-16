@@ -44,19 +44,28 @@
     
 {% endif %}
     
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Departamento</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in lista %}
+      <tr>
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.nombre}}</td>
+        <td>{{item.apellido}}</td>
+        <td>{{item.departamento}}</td>
+        <td><a href="{% url 'empleado_detalle' item.pk %}">DETALLE</a></td>
+      </tr>
+        {% endfor %}
+     
+    </tbody>
+  </table>
 
-
-{% for elem in lista  %}
-<ul>
-
-    <li>
-
-        {{elem}}
-
-    </li>
-</ul>
-{% endfor %}
-    
-{% endblock %}
-        
-   
+  {% endblock %} 
