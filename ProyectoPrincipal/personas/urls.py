@@ -12,6 +12,7 @@ urlpatterns = [
      path('empleado_detalle/<pk>/', EmpleadoDetailView.as_view(), name='empleado_detalle'),
      path('registrar_empleado/', EmpleadoCreateView.as_view(), name='registrar_empleado'),
      path('registro_exitoso', RegistroExitoso.as_view(), name='registro_exitoso'),
+     path('actualizar/<pk>', EmpleadoUpdateView.as_view(), name='actualizar'),
 
 
 ]
