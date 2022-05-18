@@ -11,6 +11,7 @@ urlpatterns = [
      path('empleados_por_trabajos', EmpleadosPorTrabajoListView.as_view(), name='empleados_por_trabajos'),
      path('empleado_detalle/<pk>/', EmpleadoDetailView.as_view(), name='empleado_detalle'),
      path('registrar_empleado/', EmpleadoCreateView.as_view(), name='registrar_empleado'),
+     path('registro_exitoso', RegistroExitoso.as_view(), name='registro_exitoso'),
 
 
 ]
