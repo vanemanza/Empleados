@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, TemplateView
 
 from . models import Persona
 
@@ -120,8 +121,13 @@ class EmpleadoDetailView(DetailView):
         #debo crear un proceso para determinar si el context es un empleado del mes o no
         return context
 
+class RegistroExitoso(TemplateView):
+    template_name = "registro_exitoso.html"
+
+
 class EmpleadoCreateView(CreateView):
     template_name = "registrar_empleado.html"
     model = Persona       
     fields = '__all__' 
-    success_url = '.'
+    success_url = reverse_lazy('registro_exitoso')
+    
