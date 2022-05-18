@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
-from django.views.generic import ListView, DetailView, CreateView, TemplateView
+from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView
 
 from . models import Persona
 
@@ -20,7 +20,7 @@ class HomeListView(ListView):
 class EmpleadosListView(ListView):
     template_name = "lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
     queryset = Persona.objects.all().order_by('apellido')
-    paginate_by = 5 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
+    paginate_by = 15 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
     #ordering = 'apellido'
     #model = Persona #listView requiere un modelo
     context_object_name = 'lista' #nombre del objeto a traves del cual accedo en html -> {{lista}}
@@ -128,6 +128,32 @@ class RegistroExitoso(TemplateView):
 class EmpleadoCreateView(CreateView):
     template_name = "registrar_empleado.html"
     model = Persona       
-    fields = '__all__' 
-    success_url = reverse_lazy('registro_exitoso')
-    
+    fields = [
+        'nombre', 
+        'apellido',
+        'puesto',
+        'departamento',
+        'habilidad'
+    ]
+    success_url = reverse_lazy('registro_exitoso')    
+
+    def form_valid(self, form): # esto no es lo ideal!
+        empleado = form.save() #creo una instancia de empleado con los datos validos del formulario y ya está en la bd
+        empleado.fullname = f'{empleado.nombre} {empleado.apellido}'
+        empleado.save()
+        return super(EmpleadoCreateView, self).form_valid(form)
+
+
+class EmpleadoUpdateView(UpdateView):
+    model = Persona
+    template_name = "actualizar.html"
+    fields = [
+        'nombre', 
+        'apellido',
+        'puesto',
+        'departamento',
+        'habilidad'
+    ]
+        
+
+           
