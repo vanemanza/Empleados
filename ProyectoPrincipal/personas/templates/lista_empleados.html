@@ -19,28 +19,27 @@
 
 {% if is_paginated %}
 
-<ul>
     
     {% if page_obj.has_previous %}            
-        <li>
-            <a href="?page={{page_obj.previous_page_number}}">Anterior</a>
-        </li>        
+        <p>
+            <a href="?page={{page_obj.previous_page_number}}">Anterior</a> &nbsp;&nbsp;
+         
     {% endif %}
 
     
     {% for i in paginator.page_range  %}
-        <li>
-            <a href="?page={{i}}">{{i}}</a>
-        </li>  
+      
+            <a href="?page={{i}}">{{i}}</a>&nbsp;&nbsp;
+        
     {% endfor %}
         
     {% if page_obj.has_next %}            
-        <li>
+      
             <a href="?page={{page_obj.next_page_number}}">Siguiente</a>
-        </li>        
+         </p>      
     {% endif %}    
    
-</ul>
+
     
 {% endif %}
     
@@ -51,7 +50,9 @@
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
         <th scope="col">Departamento</th>
-        <th scope="col">Acción</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -61,10 +62,12 @@
         <td>{{item.nombre}}</td>
         <td>{{item.apellido}}</td>
         <td>{{item.departamento}}</td>
-        <td><a href="{% url 'empleado_detalle' item.pk %}">DETALLE</a></td>
+        <td><a href="{% url 'empleado_detalle' item.pk %}">Detalle</a></td>
+        <td> <a href="#" class="btn btn-outline-success me-2">Editar</a></td>
+        <td> <a href="http://" class="btn btn-outline-danger me-2">Eliminar</a></td>
       </tr>
         {% endfor %}
-     
+   
     </tbody>
   </table>
 
