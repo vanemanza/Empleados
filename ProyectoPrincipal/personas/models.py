@@ -17,6 +17,11 @@ class Habilidades(models.Model):
 class Persona(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
+    fullname = models.CharField(
+        'Nombre Completo',
+        max_length=120,
+        blank=True
+    )
     puesto = models.CharField(max_length=100)
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
     habilidad = models.ManyToManyField(Habilidades)
