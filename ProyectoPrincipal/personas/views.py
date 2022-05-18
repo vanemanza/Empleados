@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 from . models import Persona
 
@@ -119,3 +119,9 @@ class EmpleadoDetailView(DetailView):
         context['titulo'] = 'Empleado del Mes'
         #debo crear un proceso para determinar si el context es un empleado del mes o no
         return context
+
+class EmpleadoCreateView(CreateView):
+    template_name = "registrar_empleado.html"
+    model = Persona       
+    fields = '__all__' 
+    success_url = '.'

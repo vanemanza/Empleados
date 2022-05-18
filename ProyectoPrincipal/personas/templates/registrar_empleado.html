@@ -1,0 +1,16 @@
+{% extends "base.html" %}  
+
+{% load static %} 
+
+{% block content %} 
+
+<h1>Registrar Empleado</h1>
+
+<form action="" method="POST">{% csrf_token %}
+   <P>{{ form.as_p }}</P>
+    <button type="submit">Registrar</button>
+</form>
+
+
+
+  {% endblock %} 
