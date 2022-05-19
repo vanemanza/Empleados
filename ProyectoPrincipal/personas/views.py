@@ -154,6 +154,26 @@ class EmpleadoUpdateView(UpdateView):
         'departamento',
         'habilidad'
     ]
+    success_url= reverse_lazy('registro_exitoso')
+
+    def form_valid(self, form):
+        """If the form is valid, save the associated model."""
+        # el código q coloco acá solo se ejecuta una vez q se validó q el form es válido
+        # cuando lo interceptamos, ya sabemos q el formulario es válido
+        # puede ocurrir q necesite interceptar el post antes de q se haya validado el formulario
+        self.object = form.save()
+        print(f'--------------form valid--------------')        
+        return super(EmpleadoUpdateView, self).form_valid(form)    
+
+    def post(self, request, *args, **kwargs):
+        # en el post aun no hemos validado los datos
+        self.object = self.get_object()
+        print(f'--------------post--------------')
+        datos = request.POST
+        nombre = request.POST['nombre']
+        print(f'============={nombre}===============')
+        return super().post(request, *args, **kwargs)
+
         
 
            
