@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
-from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView
+from django.views.generic import (ListView, 
+                                  DetailView, 
+                                  CreateView, 
+                                  TemplateView, 
+                                  UpdateView, 
+                                  DeleteView)
 
 from . models import Persona
 
@@ -174,6 +179,10 @@ class EmpleadoUpdateView(UpdateView):
         print(f'============={nombre}===============')
         return super().post(request, *args, **kwargs)
 
-        
+
+class EmpleadoDeleteView(DeleteView):
+    model = Persona
+    template_name = "eliminar.html"
+    success_url= reverse_lazy('registro_exitoso')    
 
            
