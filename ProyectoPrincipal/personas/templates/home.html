@@ -4,5 +4,31 @@
 
 {% block content %} 
 
-<h1>Home</h1>
+<div class="row p-5">
+  <div class="col">
+
+    
+    <h1>App para Gestión de Empleados</h1>
+    <h2>Hecha por mí!</h2>
+    <h3>En base al curso de Django de Cristhian Santa Cruz</h3>
+    
+    <h4>Con esta app podrás:</h4>
+    
+    <ul>
+      <li>Registrar Empleados en una base de datos.</li>
+      <li>Listarlos</li>
+      <li>Ver el detalle de la información sobre cada uno.</li>
+      <li>Editar los datos.</li>
+      <li>Eliminarlos del registro de empleados.</li>
+    </ul>
+    <p>Espero que te guste y si te interesa ver el código, podés hacerlo en <a href="https://github.com/vanemanza/Empleados" style="color:yellow" >https://github.com/vanemanza</a></p>
+  </div>
+    <div class="col-4">
+      <img src="{% static 'personas/trabajando.png' %}" style="width: 80%; margin-top: 80px; margin-left: 25px;">
+    </div>
+</div>
+
+
+
+
   {% endblock %} 
