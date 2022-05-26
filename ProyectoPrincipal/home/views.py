@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, CreateView
 from .models import Prueba
 from .forms import PruebaForm
@@ -29,5 +30,5 @@ class PruebaCreateView(CreateView):
     model = Prueba
     template_name = "agregar.html"
     form_class = PruebaForm
-    success_url = '/'
+    success_url = reverse_lazy('prueba_lista')
     
