@@ -13,13 +13,16 @@ class PruebaForm(forms.ModelForm):
         widgets = {
             'titulo': forms.TextInput(
                 attrs = {
-                    'placeholder': 'Ingrese el tessto x aki ...',
+                    'placeholder': 'Ingrese palabras con P',
                 }
             )         
 
         }
-
-
+    def clean_titulo(self):
+        titulo = self.cleaned_data['titulo']
+        if not titulo.startswith("P"):
+            raise forms.ValidationError('El título debe comenzar con la letra P mayúscula!!!!!!')
+        return titulo    
 
     def clean_cantidad(self):
         cantidad = self.cleaned_data['cantidad']
