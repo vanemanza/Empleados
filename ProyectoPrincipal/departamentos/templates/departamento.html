@@ -1,9 +1,16 @@
 <h1>vista desde departamentos</h1>
 
-
-{% for departamento in departamentos  %}
-
-<p>{{ departamento }}</p>
-    
-{% endfor %}
-    
+<form action="" method="POST">{% csrf_token %}
+    <h3>Datos del Empleado</h3>
+    <p>
+        Nombre {{ form.nombre }}        
+    </p>
+    <p>
+        Apellido {{ form.apellido }}
+    </p>
+    <h3>Datos del Departamento</h3>
+    <p>
+        Departamento {{ form.departamento }}
+    </p>
+    <button type="submit">Enviar plis</button>
+</form>
