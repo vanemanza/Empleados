@@ -8,7 +8,7 @@ from .views import NuevoDepartamentoView, DepartamentosView
 # ]
 
 urlpatterns = [   
-    path('', DepartamentosView.as_view(), name='inicio'),
+    path('', DepartamentosView.as_view(), name='departamentos'),
     path('nuevo/', NuevoDepartamentoView.as_view(), name='crear_departamento'),
 ]
 

@@ -23,12 +23,12 @@ from django.urls import reverse_lazy
 #     return render(request, 'departamento.html', context,)
 
 class DepartamentosView(TemplateView):
-    template_name = "home.html"
+    template_name = "departamentos/home.html"
 
 class NuevoDepartamentoView(FormView):
-    template_name = 'departamento.html'
+    template_name = 'departamentos/departamento.html'
     form_class = NuevoDepartamentoForm
-    success_url = reverse_lazy('inicio')    
+    success_url = reverse_lazy('departamentos')    
 
     def form_valid(self, form):
         print(f'----- estamos en el form valid----------------------')

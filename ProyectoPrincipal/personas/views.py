@@ -12,7 +12,7 @@ from . models import Persona
 
 # 0) Template Base - Home
 class HomeListView(ListView):
-    template_name = 'home.html'
+    template_name = 'personas/home.html'
     queryset = Persona.objects.all().order_by('apellido')
     paginate_by = 7
     context_object_name = 'lista'
@@ -23,7 +23,7 @@ class HomeListView(ListView):
 
 # 1) listar todos los empleados de la empresa
 class EmpleadosListView(ListView):
-    template_name = "lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
+    template_name = "personas/lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
     queryset = Persona.objects.all().order_by('apellido')
     paginate_by = 15 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
     #ordering = 'apellido'
@@ -54,7 +54,7 @@ class EmpleadosPorAreaListView(ListView):
     # en vez de model puedo usar atributo queryset para filtrar segun lo q necesite y no toda la lista
     #queryset = Persona.objects.filter(departamento__nombre='area contable') # no es muy eficiente xq le tengo q indicar en el filtro el area cada vez
     #en vez de usar atributo queryset, uso metodo get_queryset q retorna una lista
-    template_name = "lista_por_area.html"
+    template_name = "personas/lista_por_area.html"
 
     def get_queryset(self):
         # puedo sobreescribir el metodo q trae x defaul el ListView
@@ -70,7 +70,7 @@ class EmpleadosPorAreaListView(ListView):
 
 class EmpleadosPorTrabajoListView(ListView):
     #model = Persona
-    template_name = "empleados_por_trabajo.html"
+    template_name = "personas/empleados_por_trabajo.html"
     #context_object_name = 'lista_puesto'
 
     def get_queryset(self):
@@ -85,7 +85,7 @@ class EmpleadosPorNombre(ListView):
     """
     Lista empleados por palabra clave
     """
-    template_name = "empleado_por_nombre.html"
+    template_name = "personas/empleado_por_nombre.html"
     context_object_name = 'empleados'
 
     def get_queryset(self) : # función donde haré el filtro!
@@ -100,7 +100,7 @@ class EmpleadosPorNombre(ListView):
 # 5) listar habilidades de un empleado
 
 class HabilidadesList(ListView):
-    template_name = 'habilidades.html'
+    template_name = 'personas/habilidades.html'
     context_object_name = 'habilidades'
 
     def get_queryset(self):
@@ -114,7 +114,7 @@ class HabilidadesList(ListView):
 
 class EmpleadoDetailView(DetailView):
     model = Persona
-    template_name = "detalles_empleado.html"
+    template_name = "personas/detalles_empleado.html"
 
     # def get_object(self, queryset: Optional[models.query.QuerySet[_M]] = ...) -> _M: #redefine la forma de recuperar un objeto
     #     return super().get_object(queryset)
@@ -127,11 +127,11 @@ class EmpleadoDetailView(DetailView):
         return context
 
 class RegistroExitoso(TemplateView):
-    template_name = "registro_exitoso.html"
+    template_name = "personas/registro_exitoso.html"
 
 
 class EmpleadoCreateView(CreateView):
-    template_name = "registrar_empleado.html"
+    template_name = "personas/registrar_empleado.html"
     model = Persona       
     fields = [
         'nombre', 
@@ -151,7 +151,7 @@ class EmpleadoCreateView(CreateView):
 
 class EmpleadoUpdateView(UpdateView):
     model = Persona
-    template_name = "actualizar.html"
+    template_name = "personas/actualizar.html"
     fields = [
         'nombre', 
         'apellido',
@@ -182,7 +182,7 @@ class EmpleadoUpdateView(UpdateView):
 
 class EmpleadoDeleteView(DeleteView):
     model = Persona
-    template_name = "eliminar.html"
+    template_name = "personas/eliminar.html"
     success_url= reverse_lazy('registro_exitoso')    
 
            

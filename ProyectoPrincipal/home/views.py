@@ -9,26 +9,26 @@ from .forms import PruebaForm
 
 
 class PruebaListView(ListView):
-    template_name = "lista.html"
+    template_name = "home/lista.html"
     context_object_name = 'listaNumeros'
     queryset = [1, 2, 3, 4, 5]
 
 
 class ListarPruebaListView(ListView):
-    template_name = "lista_prueba.html"
+    template_name = "home/lista_prueba.html"
     model = Prueba
     context_object_name = 'lista'
 
 
 class PruebaCreateView(CreateView):
     model = Prueba
-    template_name = "add.html"
+    template_name = "home/agregar.html"
     fields = '__all__'
 
 
 class PruebaCreateView(CreateView):
     model = Prueba
-    template_name = "agregar.html"
+    template_name = "home/agregar.html"
     form_class = PruebaForm
     success_url = reverse_lazy('prueba_lista')
     
