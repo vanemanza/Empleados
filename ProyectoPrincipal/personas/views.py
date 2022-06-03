@@ -20,26 +20,33 @@ class HomeListView(ListView):
     def get_context_data(self, **kwargs):         
         context =  super().get_context_data(**kwargs)  
         return context
-
+# QUEDÉ EN EL VIDEO 84 MINUTO 6.37 NO PUEDO HCER Q FUNCIONE EL BUSCADOR! COMENTÉ PAGINATION Y GET_CONTEXT_DATA
 # 1) listar todos los empleados de la empresa
 class EmpleadosListView(ListView):
     template_name = "personas/lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
-    queryset = Persona.objects.all().order_by('apellido')
-    paginate_by = 15 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
+    #queryset = Persona.objects.all().order_by('apellido')
+    #paginate_by = 15 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
     #ordering = 'apellido'
     #model = Persona #listView requiere un modelo
     context_object_name = 'lista' #nombre del objeto a traves del cual accedo en html -> {{lista}}
     #listView : la vista se retorna x defecto en un object list, x eso no hace falta pasarle el context_object_name
     
-    def get_context_data(self, **kwargs): 
-        context =  super().get_context_data(**kwargs)# este es el contexto q enviamos al template
-        print(context)
-        # el contexto posee los siguientes objetos:
-            # paginator
-            # page_obj
-            # is_paginated
-            # object_list
-        return context
+    # def get_context_data(self, **kwargs): 
+    #     context =  super().get_context_data(**kwargs)# este es el contexto q enviamos al template
+    #     print(context)
+    #     # el contexto posee los siguientes objetos:
+    #         # paginator
+    #         # page_obj
+    #         # is_paginated
+    #         # object_list
+    #     return context
+
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get("kword", "")
+        lista = Persona.objects.filter(
+            nombre__icontains=palabra_clave
+        )
+        return lista 
    
 
 # 2) listar todos los empleados q pertenecen a un area de la empresa

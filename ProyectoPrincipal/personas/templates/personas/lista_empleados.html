@@ -9,8 +9,10 @@
     <h1>Listado de Empleados</h1>
   </div>
   <div class="col mt-3">
-    <input type="text" name="" id="" placeholder="Buscar empleado...">
-    <button type="submit">Buscar</button>
+    <form action="" method="GET">{% csrf_token %}
+      <input type="text" name="" id="kword" name="kword" placeholder="Buscar empleado...">
+      <button type="submit">Buscar</button>
+    </form>
   </div>
 </div>
 
