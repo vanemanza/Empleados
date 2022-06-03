@@ -140,7 +140,7 @@ class EmpleadoCreateView(CreateView):
         'departamento',
         'habilidad'
     ]
-    success_url = reverse_lazy('registro_exitoso')    
+    success_url = reverse_lazy('personas_app:registro_exitoso')    
 
     def form_valid(self, form): # esto no es lo ideal!
         empleado = form.save() #creo una instancia de empleado con los datos validos del formulario y ya está en la bd
@@ -159,7 +159,7 @@ class EmpleadoUpdateView(UpdateView):
         'departamento',
         'habilidad'
     ]
-    success_url= reverse_lazy('registro_exitoso')
+    success_url= reverse_lazy('personas/registro_exitoso')
 
     def form_valid(self, form):
         """If the form is valid, save the associated model."""
@@ -183,6 +183,6 @@ class EmpleadoUpdateView(UpdateView):
 class EmpleadoDeleteView(DeleteView):
     model = Persona
     template_name = "personas/eliminar.html"
-    success_url= reverse_lazy('registro_exitoso')    
+    success_url= reverse_lazy('personas/registro_exitoso')    
 
            

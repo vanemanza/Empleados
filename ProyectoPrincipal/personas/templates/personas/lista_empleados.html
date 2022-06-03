@@ -62,9 +62,9 @@
         <td>{{item.nombre}}</td>
         <td>{{item.apellido}}</td>
         <td>{{item.departamento}}</td>
-        <td><a href="{% url 'empleado_detalle' item.pk %}" class="btn btn-outline-warning me-2">Detalle</a></td>
-        <td> <a href="{% url 'actualizar' item.pk %}" class="btn btn-outline-success me-2">Editar</a></td>
-        <td> <a href="{% url 'eliminar' item.pk %}" class="btn btn-outline-danger me-2">Eliminar</a></td>
+        <td><a href="{% url 'personas_app:empleado_detalle' item.pk %}" class="btn btn-outline-warning me-2">Detalle</a></td>
+        <td> <a href="{% url 'personas_app:actualizar' item.pk %}" class="btn btn-outline-success me-2">Editar</a></td>
+        <td> <a href="{% url 'personas_app:eliminar' item.pk %}" class="btn btn-outline-danger me-2">Eliminar</a></td>
       </tr>
         {% endfor %}
    
