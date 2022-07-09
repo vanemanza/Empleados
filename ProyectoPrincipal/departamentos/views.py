@@ -7,8 +7,9 @@ from .forms import NuevoDepartamentoForm
 #from .models import Departamento
 from personas.models import Persona
 from departamentos.models import Departamento
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.urls import reverse_lazy
+
 
 
 # Create your views here.
@@ -22,8 +23,11 @@ from django.urls import reverse_lazy
 #     }
 #     return render(request, 'departamento.html', context,)
 
-class DepartamentosView(TemplateView):
+class DepartamentosView(ListView):
     template_name = "departamentos/home.html"
+    model = Departamento
+    context_object_name = 'departamentos'
+    paginate_by = 5
 
 class NuevoDepartamentoView(FormView):
     template_name = 'departamentos/departamento.html'
