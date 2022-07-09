@@ -24,7 +24,7 @@ class HomeListView(TemplateView):
 class EmpleadosListView(ListView):
     template_name = "personas/lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
     #queryset = Persona.objects.all().order_by('apellido')
-    paginate_by = 15 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
+    paginate_by = 7 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
     ordering = 'apellido'
     model = Persona #listView requiere un modelo
     context_object_name = 'lista' #nombre del objeto a traves del cual accedo en html -> {{lista}}

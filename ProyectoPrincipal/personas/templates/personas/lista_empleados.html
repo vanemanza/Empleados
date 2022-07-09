@@ -4,19 +4,20 @@
 
 {% block content %} 
 <div class="row">
-<div class="col">
-    <h1 >Listado de Empleados</h1> 
- </div>
-    <nav class="navbar  col-5">
-      <div class="container-fluid">
-        <form class="d-flex" role="search" method="GET">{% csrf_token %}
-          <input class="form-control me-2" id="kword" name="kword" type="search" placeholder="" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
-      </div>
-    </nav>
 
+  <h3 class="col pt-3" >Listado de Empleados</h3> 
+  
+  <nav class="col p-3">
+    <div class="container-fluid">
+      <form class="d-flex" role="search" method="GET">{% csrf_token %}
+        <input class="form-control form-control-sm me-2 mt-3 mb-1" style="height:100%" type="text" id="kword" name="kword" type="search" placeholder="" aria-label="Search">
+        <button class="btn btn-outline-info mt-2 btn-sm p-1" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+     
 </div>
+
 
 <!-- * usando en la Listview el atributo "context_object_name"
 
@@ -30,7 +31,7 @@
     sobre los que está operando la vista. -->
     
 
-{% if is_paginated %}
+<!-- {% if is_paginated %}
 
     
     {% if page_obj.has_previous %}            
@@ -54,7 +55,7 @@
    
 
     
-{% endif %}
+{% endif %} -->
     
 <table class="table" style="color:white">
     <thead>
@@ -83,5 +84,27 @@
    
     </tbody>
   </table>
+  {% if is_paginated %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+      {% if page_obj.has_previous %}   
+      <li class="page-item">
+        <a class="page-link">Anterior</a>
+      </li>
+      {% endif %}
+      {% for i in paginator.page_range  %}
+      
+      <li class="page-item">
+        <a class="page-link" href="?page={{i}}">{{i}}</a>
+      </li>
 
+      {% endfor %} 
+      {% if page_obj.has_next %}       
+      <li class="page-item">
+        <a class="page-link" href="?page={{page_obj.next_page_number}}">Siguiente</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+    {% endif %} 
   {% endblock %} 
