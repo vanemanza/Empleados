@@ -11,23 +11,22 @@ from django.views.generic import (ListView,
 from . models import Persona
 
 # 0) Template Base - Home
-class HomeListView(ListView):
+class HomeListView(TemplateView):
     template_name = 'personas/home.html'
-    queryset = Persona.objects.all().order_by('apellido')
-    paginate_by = 7
-    context_object_name = 'lista'
+    #queryset = Persona.objects.all().order_by('apellido')
+    #paginate_by = 7
+    #context_object_name = 'lista'
 
-    def get_context_data(self, **kwargs):         
-        context =  super().get_context_data(**kwargs)  
-        return context
-# QUEDÉ EN EL VIDEO 84 MINUTO 6.37 NO PUEDO HCER Q FUNCIONE EL BUSCADOR! COMENTÉ PAGINATION Y GET_CONTEXT_DATA
-# 1) listar todos los empleados de la empresa
+    # def get_context_data(self, **kwargs):         
+    #     context =  super().get_context_data(**kwargs)  
+    #     return context
+
 class EmpleadosListView(ListView):
     template_name = "personas/lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
     #queryset = Persona.objects.all().order_by('apellido')
-    #paginate_by = 15 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
-    #ordering = 'apellido'
-    #model = Persona #listView requiere un modelo
+    paginate_by = 15 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
+    ordering = 'apellido'
+    model = Persona #listView requiere un modelo
     context_object_name = 'lista' #nombre del objeto a traves del cual accedo en html -> {{lista}}
     #listView : la vista se retorna x defecto en un object list, x eso no hace falta pasarle el context_object_name
     
@@ -190,6 +189,6 @@ class EmpleadoUpdateView(UpdateView):
 class EmpleadoDeleteView(DeleteView):
     model = Persona
     template_name = "personas/eliminar.html"
-    success_url= reverse_lazy('personas/registro_exitoso')    
+    success_url= reverse_lazy('personas/registro_exitoso.html')    
 
            

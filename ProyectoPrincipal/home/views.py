@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, CreateView
-from .models import Prueba
+from .models import Prueba, Product
 from .forms import PruebaForm
+from .serializers import ProductSerializer
+
+from rest_framework.generics import ListAPIView
 # Create your views here.
 # class Prueba(TemplateView):
 #     template_name = 'prueba.html'
@@ -31,4 +34,10 @@ class PruebaCreateView(CreateView):
     template_name = "home/agregar.html"
     form_class = PruebaForm
     success_url = reverse_lazy('prueba_lista')
+
+
+class ProductList(ListAPIView):
+    serializer_class = ProductSerializer    
     
+    def get_queryset(self):
+        return Product.objects.all()
