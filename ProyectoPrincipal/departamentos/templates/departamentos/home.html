@@ -1,8 +1,57 @@
-<h1>Home de Departamentos</h1>
+{% extends "base.html" %}  
 
-<p>V</p>
-<p>A</p>
-<p>N</p>
-<P>E</P>
-<p>S</p>
-<p>A</p>
+{% load static %} 
+
+{% block content %} 
+<div class="row">
+
+    <h3 class="col pt-3" >Listado de Departamentos</h3>    
+       
+</div>
+  
+  
+<table class="table" style="color:white">
+    <thead>
+      <tr >
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Código</th>      
+        <th scope="col">Acción</th>      
+      </tr>
+    </thead>
+    <tbody>
+          {% for departamento in departamentos %}
+        <tr >
+          <th scope="row">{{ departamento.id }}</th>
+          <td>{{ departamento.nombre }}</td>
+          <td>{{ departamento.codigo }}</td>
+          <td><a href="#" class="btn btn-outline-success me-2">Detalle</a></td>
+        </tr>
+          {% endfor %}     
+    </tbody>
+</table>
+   
+{% if is_paginated %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    {% if page_obj.has_previous %}   
+    <li class="page-item">
+      <a class="page-link">Anterior</a>
+    </li>
+    {% endif %}
+    {% for i in paginator.page_range  %}
+    
+    <li class="page-item">
+      <a class="page-link" href="?page={{i}}">{{i}}</a>
+    </li>
+
+    {% endfor %} 
+    {% if page_obj.has_next %}       
+    <li class="page-item">
+      <a class="page-link" href="?page={{page_obj.next_page_number}}">Siguiente</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+  {% endif %} 
+{% endblock %}
