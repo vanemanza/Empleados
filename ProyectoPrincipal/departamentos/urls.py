@@ -6,6 +6,7 @@ from .views import NuevoDepartamentoView, DepartamentosView
 # urlpatterns = [   
 #     path('', departamento, name='departamentos'),
 # ]
+app_name = 'departamentos_app'
 
 urlpatterns = [   
     path('', DepartamentosView.as_view(), name='departamentos'),
