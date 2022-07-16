@@ -165,7 +165,7 @@ class EmpleadoUpdateView(UpdateView):
         'departamento',
         'habilidad'
     ]
-    success_url= reverse_lazy('personas/registro_exitoso')
+    success_url= reverse_lazy('personas_app:registro_exitoso')
 
     def form_valid(self, form):
         """If the form is valid, save the associated model."""
@@ -189,6 +189,6 @@ class EmpleadoUpdateView(UpdateView):
 class EmpleadoDeleteView(DeleteView):
     model = Persona
     template_name = "personas/eliminar.html"
-    success_url= reverse_lazy('personas/registro_exitoso.html')    
+    success_url= reverse_lazy('personas_app:registro_exitoso')    
 
            
