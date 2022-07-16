@@ -67,7 +67,7 @@ class EmpleadosPorAreaListView(ListView):
         # retorna una lista de elementos
         # el valor devuelto debe ser un iterable o una instancia del queryset
         area = self.kwargs['departamento'] # recupero el parametro q me envian por url!
-        lista = Persona.objects.filter(departamento__nombre=area)
+        lista = Persona.objects.filter(departamento__nombre=area) # departamento es otra tabla y nombre es el atr q necesito de la rel
         return lista
 
 
