@@ -25,7 +25,7 @@
          
           <td>{{ departamento.nombre }}</td>
           <td>{{ departamento.area }}</td>
-          <td><a href="{% url 'personas_app:lista_por_area' departamento.area %}" class="btn btn-outline-success me-2">Empleados del area</a></td>
+          <td><a href="{% url 'personas_app:lista_por_area' departamento.nombre %}" class="btn btn-outline-success me-2">Empleados del area</a></td>
         </tr>
           {% endfor %}     
     </tbody>

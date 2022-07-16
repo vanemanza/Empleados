@@ -61,6 +61,7 @@ class EmpleadosPorAreaListView(ListView):
     #queryset = Persona.objects.filter(departamento__nombre='area contable') # no es muy eficiente xq le tengo q indicar en el filtro el area cada vez
     #en vez de usar atributo queryset, uso metodo get_queryset q retorna una lista
     template_name = "personas/lista_por_area.html"
+    context_object_name = 'lista'
 
     def get_queryset(self):
         # puedo sobreescribir el metodo q trae x defaul el ListView

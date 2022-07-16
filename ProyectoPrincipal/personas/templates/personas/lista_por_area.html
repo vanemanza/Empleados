@@ -3,13 +3,14 @@
 {% load static %} 
 
 {% block content %} 
-<h2>Lista por areas</h2>
+<h2>Lista por Departamentos</h2>
 
 
 {% for q in object_list  %}
 <ul>
-
-    {{ q }}
+    <p>
+        {{ q }} ---                {{q.departamento}} 
+    </p>
 
 </ul>
 {% endfor %}
