@@ -19,54 +19,16 @@
 </div>
 
 
-<!-- * usando en la Listview el atributo "context_object_name"
-
-    {% for l in lista  %}
-    <p>
-        {{l}}
-    </p>    
-    {% endfor %}   -->
-
-<!-- Mientras se ejecuta ListView, "self.object_list" contendrá la lista de objetos
-    sobre los que está operando la vista. -->
-    
-
-<!-- {% if is_paginated %}
-
-    
-    {% if page_obj.has_previous %}            
-        <p>
-            <a href="?page={{page_obj.previous_page_number}}">Anterior</a> &nbsp;&nbsp;
-         
-    {% endif %}
-
-    
-    {% for i in paginator.page_range  %}
-      
-            <a href="?page={{i}}">{{i}}</a>&nbsp;&nbsp;
-        
-    {% endfor %}
-        
-    {% if page_obj.has_next %}            
-      
-            <a href="?page={{page_obj.next_page_number}}">Siguiente</a>
-         </p>      
-    {% endif %}    
-   
-
-    
-{% endif %} -->
-    
 <table class="table" style="color:white">
-    <thead>
-      <tr >
-        <th scope="col">ID</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Departamento</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
+  <thead>
+    <tr >
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Departamento</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -82,8 +44,8 @@
       </tr>
         {% endfor %}
    
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   {% if is_paginated %}
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">
@@ -107,4 +69,42 @@
     </ul>
   </nav>
     {% endif %} 
-  {% endblock %} 
+    {% endblock %} 
+    
+    <!-- * usando en la Listview el atributo "context_object_name"
+    
+        {% for l in lista  %}
+        <p>
+            {{l}}
+        </p>    
+        {% endfor %}   -->
+    
+    <!-- Mientras se ejecuta ListView, "self.object_list" contendrá la lista de objetos
+        sobre los que está operando la vista. -->
+        
+    
+    <!-- {% if is_paginated %}
+    
+        
+        {% if page_obj.has_previous %}            
+            <p>
+                <a href="?page={{page_obj.previous_page_number}}">Anterior</a> &nbsp;&nbsp;
+             
+        {% endif %}
+    
+        
+        {% for i in paginator.page_range  %}
+          
+                <a href="?page={{i}}">{{i}}</a>&nbsp;&nbsp;
+            
+        {% endfor %}
+            
+        {% if page_obj.has_next %}            
+          
+                <a href="?page={{page_obj.next_page_number}}">Siguiente</a>
+             </p>      
+        {% endif %}    
+       
+    
+        
+    {% endif %} -->

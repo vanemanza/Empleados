@@ -1,4 +1,4 @@
-1) crear el entorno virtual dentro del directorio donde crearé el proyecto
+1) crear el entorno virtual 
 
 python3 -m venv env
 
@@ -6,9 +6,7 @@ python3 -m venv env
 
 (env) $ python -m pip install --upgrade pip
 
-3) crear un archivos requirements.txt con las dependencias a instalar
-
-4) instalar las dependencias
+3) crear requirements.txt con las dependencias e instalar
 
 (env) $ pip install -r requirements.txt
 
