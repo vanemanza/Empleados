@@ -13,19 +13,19 @@
 <table class="table" style="color:white">
     <thead>
       <tr >
-        <th scope="col">ID</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Código</th>      
+       
+        <th scope="col">Departamento</th>
+        <th scope="col">Area</th>
         <th scope="col">Acción</th>      
       </tr>
     </thead>
     <tbody>
           {% for departamento in departamentos %}
         <tr >
-          <th scope="row">{{ departamento.id }}</th>
+         
           <td>{{ departamento.nombre }}</td>
-          <td>{{ departamento.codigo }}</td>
-          <td><a href="#" class="btn btn-outline-success me-2">Detalle</a></td>
+          <td>{{ departamento.area }}</td>
+          <td><a href="{% url 'personas_app:lista_por_area' departamento.area %}" class="btn btn-outline-success me-2">Empleados del area</a></td>
         </tr>
           {% endfor %}     
     </tbody>
