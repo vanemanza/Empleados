@@ -1,6 +1,8 @@
 from departamentos.models import Departamento
 from django.db import models
 
+from ckeditor.fields import RichTextField
+
 # Create your models here.
 
 class Habilidades(models.Model):
@@ -25,6 +27,7 @@ class Persona(models.Model):
     puesto = models.CharField(max_length=100)
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
     habilidad = models.ManyToManyField(Habilidades)
+    hoja_vida = RichTextField()
 
     def __str__(self) -> str:
         return f'{self.nombre} {self.apellido}'
