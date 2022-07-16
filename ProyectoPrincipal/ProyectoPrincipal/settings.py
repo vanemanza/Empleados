@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'personas',
     # apps de terceros
     'django_filters',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
