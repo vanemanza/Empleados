@@ -17,6 +17,12 @@ class Habilidades(models.Model):
 
 
 class Persona(models.Model):
+    JOB_CHOICES = (
+        ('0', 'CONTADOR'),
+        ('1', 'ADMINISTRADOR'),
+        ('2', 'ECONOMISTA'),
+        ('3', 'OTRO'),
+    )
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     fullname = models.CharField(
@@ -24,8 +30,9 @@ class Persona(models.Model):
         max_length=120,
         blank=True
     )
-    puesto = models.CharField(max_length=100)
+    puesto = models.CharField('Trabajo', max_length=1, choices=JOB_CHOICES)
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to='persona', blank=True, null=True)
     habilidad = models.ManyToManyField(Habilidades)
     hoja_vida = RichTextField()
 

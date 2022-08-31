@@ -10,6 +10,7 @@ from django.views.generic import (ListView,
 
 from . models import Persona
 
+
 # 0) Template Base - Home
 class HomeListView(TemplateView):
     template_name = 'personas/home.html'
@@ -24,7 +25,7 @@ class HomeListView(TemplateView):
 class EmpleadosListView(ListView):
     template_name = "personas/lista_empleados.html" #es la ruta donde está el archivo html con el q vamos a trabajar
     #queryset = Persona.objects.all().order_by('apellido')
-    paginate_by = 7 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
+    paginate_by = 5 # para optimizar la consulta y q no sea tan pesada, internamente tiene el parametro page=
     ordering = 'apellido'
     model = Persona #listView requiere un modelo
     context_object_name = 'lista' #nombre del objeto a traves del cual accedo en html -> {{lista}}
@@ -145,8 +146,10 @@ class EmpleadoCreateView(CreateView):
         'apellido',
         'puesto',
         'departamento',
-        'habilidad'
+        'habilidad',
+        'avatar'
     ]
+    
     success_url = reverse_lazy('personas_app:registro_exitoso')    
 
     def form_valid(self, form): # esto no es lo ideal!

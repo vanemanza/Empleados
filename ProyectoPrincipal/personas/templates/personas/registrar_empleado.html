@@ -6,10 +6,19 @@
 
 <h1>Registrar Empleado</h1>
 
-<form action="" method="POST">{% csrf_token %}
-   <P>{{ form.as_p }}</P>
+<form action="" method="POST" enctype="'multipart/form-data">{% csrf_token %}
+   <!--P>{{ form.as_p }}</P-->
+   <label for="nombres">Nombre: {{form.nombre}}</label>
+   <label for="apellido">Apellido: {{form.apellido}}</label>
+   <label for="trabajo">Trabajo: {{form.puesto}}</label>
+   <label for="departamento">Departamento: {{form.departamento}}</label>
+   <label for="habilidad">Habilidad: {{form.habilidad}}</label>
+   <label for="avatar">Foto: {{form.avatar}}</label>  
+ 
     <button type="submit">Registrar</button>
 </form>
+
+
 
 
 
